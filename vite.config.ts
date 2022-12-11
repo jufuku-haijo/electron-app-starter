@@ -14,25 +14,28 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.join(__dirname, 'src'),
-      'styles': path.join(__dirname, 'src/assets/styles'),
+      styles: path.join(__dirname, 'src/assets/styles'),
     },
   },
   plugins: [
     react(),
     electron({
-      include: [
-        'electron',
-        'preload',
-      ],
+      include: ['electron', 'preload'],
       transformOptions: {
         sourcemap: !!process.env.VSCODE_DEBUG,
       },
       plugins: [
         ...(process.env.VSCODE_DEBUG
           ? [
-            // Will start Electron via VSCode Debug
-            customStart(debounce(() => console.log(/* For `.vscode/.debug.script.mjs` */'[startup] Electron App'))),
-          ]
+              // Will start Electron via VSCode Debug
+              customStart(
+                debounce(() =>
+                  console.log(
+                    /* For `.vscode/.debug.script.mjs` */ '[startup] Electron App'
+                  )
+                )
+              ),
+            ]
           : []),
         // Allow use `import.meta.env.VITE_SOME_KEY` in Electron-Main
         loadViteEnv(),
@@ -43,13 +46,15 @@ export default defineConfig({
       nodeIntegration: false,
     }),
   ],
-  server: process.env.VSCODE_DEBUG ? (() => {
-    const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
-    return {
-      host: url.hostname,
-      port: +url.port,
-    }
-  })() : undefined,
+  server: process.env.VSCODE_DEBUG
+    ? (() => {
+        const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
+        return {
+          host: url.hostname,
+          port: +url.port,
+        }
+      })()
+    : undefined,
   clearScreen: false,
 })
 

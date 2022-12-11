@@ -9,18 +9,26 @@
   "main": "dist-electron/electron/main/index.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && electron-builder"
+    "build": "tsc && vite build && electron-builder",
+    "format": "prettier ./**/*.{ts,tsx,js} --write",
+    "lint": "eslint . --ext .js,jsx,ts,tsx"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
     "@vitejs/plugin-react": "^3.0.0",
     "electron": "^21.3.1",
     "electron-builder": "^23.6.0",
+    "eslint": "^8.29.0",
+    "eslint-plugin-no-cstyle-for-loop": "^1.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "prettier": "^2.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.56.1",

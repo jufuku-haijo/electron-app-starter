@@ -2,22 +2,19 @@ import { useEffect, useState } from 'react'
 import styles from 'styles/app.module.scss'
 import { Modal } from './components/Modal'
 
-
 const DirView = () => {
   const [content, setContent] = useState<string[]>([])
 
   useEffect(() => {
     window.electronAPI
-          .queryDir(Math.floor(Math.random() * 10))
-          .then(res => setContent(res))
+      .queryDir(Math.floor(Math.random() * 10))
+      .then((res) => setContent(res))
   }, [])
 
-  return (
-    content.length === 0 ?  null : <p style={{overflow: 'scroll'}}>{content}</p> 
+  return content.length === 0 ? null : (
+    <p style={{ overflow: 'scroll' }}>{content}</p>
   )
 }
-
-
 
 const App: React.FC = () => {
   const [count, setCount] = useState(0)
@@ -33,22 +30,18 @@ const App: React.FC = () => {
         <div className={styles.logos}>
           <div className={styles.imgBox}>
             <img
-              src='./electron.png'
+              src="./electron.png"
               style={{ height: '24vw' }}
               className={styles.appLogo}
               alt="electron"
             />
           </div>
           <div className={styles.imgBox}>
-            <img
-              src='./vite.svg'
-              style={{ height: '19vw' }}
-              alt="vite"
-            />
+            <img src="./vite.svg" style={{ height: '19vw' }} alt="vite" />
           </div>
           <div className={styles.imgBox}>
             <img
-              src='./react.svg'
+              src="./react.svg"
               style={{ maxWidth: '100%' }}
               className={styles.appLogo}
               alt="logo"
@@ -92,8 +85,7 @@ const App: React.FC = () => {
             Vite Docs
           </a>
           <div className={styles.staticPublic}>
-            Place static files into the{' '}
-            <code>/public</code> folder
+            Place static files into the <code>/public</code> folder
             <img style={{ width: 77 }} src="./node.png" />
           </div>
         </div>
