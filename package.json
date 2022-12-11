@@ -1,9 +1,9 @@
 {
-  "name": "electron-vite-react",
+  "name": "electron-app-starter",
   "productName": "Electron",
   "private": true,
   "version": "0.1.0",
-  "description": "Vite React Electron boilerplate.",
+  "description": "A electron app starter",
   "author": "nemurubaka",
   "license": "MIT",
   "main": "dist-electron/electron/main/index.js",
