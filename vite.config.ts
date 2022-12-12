@@ -58,7 +58,10 @@ export default defineConfig({
   clearScreen: false,
 })
 
-function debounce<Fn extends (...args: any[]) => void>(fn: Fn, delay = 299) {
+function debounce<Fn extends (...args: unknown[]) => void>(
+  fn: Fn,
+  delay = 299
+) {
   let t: NodeJS.Timeout
   return ((...args) => {
     clearTimeout(t)
